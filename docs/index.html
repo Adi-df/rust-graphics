@@ -6,6 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/style.css" rel="stylesheet">
+  <link href="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.css" rel="stylesheet">
+  <script src="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.min.js"></script>
 </head>
 
 <body>
@@ -21,6 +23,15 @@
           .querySelector("#glcanvas")
           .addEventListener("contextmenu", (e) => e.preventDefault());
       </script>
+    </div>
+    <div class="project">
+      <h2>Rain</h2>
+      <div class="asciinema-player" id="rust-rain-player"></div>
+      <script>AsciinemaPlayer.create('casts/rust-rain.cast', document.querySelector("div#rust-rain-player"), {
+          loop: true,
+          preload: true,
+          autoPlay: true
+        });</script>
     </div>
     <div class="project">
       <h2>Triangles 1</h2>
