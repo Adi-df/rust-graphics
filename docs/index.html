@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/style.css" rel="stylesheet">
   <link href="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.css" rel="stylesheet">
-  <script src="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.min.js"></script>
+  <script src="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.min.js" defer></script>
 </head>
 
 <body>
@@ -16,22 +16,28 @@
     <div class="project">
       <h2>Bezier Curves (interactive)</h2>
       <canvas id="glcanvas" width="800" height="600"></canvas>
-      <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script>
+      <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js" defer></script>
       <script>
-        load("wasm/rust-bezier.wasm");
-        document
-          .querySelector("#glcanvas")
-          .addEventListener("contextmenu", (e) => e.preventDefault());
+        window.addEventListener("load", () => {
+          load("wasm/rust-bezier.wasm");
+          document
+            .querySelector("#glcanvas")
+            .addEventListener("contextmenu", (e) => e.preventDefault());
+        });
       </script>
     </div>
     <div class="project">
       <h2>Rain</h2>
       <div class="asciinema-player" id="rust-rain-player"></div>
-      <script>AsciinemaPlayer.create('casts/rust-rain.cast', document.querySelector("div#rust-rain-player"), {
-          loop: true,
-          preload: true,
-          autoPlay: true
-        });</script>
+      <script>
+        window.addEventListener("load", () => {
+          AsciinemaPlayer.create('casts/rust-rain.cast', document.querySelector("div#rust-rain-player"), {
+            loop: true,
+            preload: true,
+            autoPlay: true
+          });
+        });
+      </script>
     </div>
     <div class="project">
       <h2>Triangles 1</h2>
