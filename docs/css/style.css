@@ -12,14 +12,12 @@ div.projects {
   align-items: center;
   width: 100%;
 }
+div.project {
+  width: 90%;
+  max-width: 800px;
+}
 
-div.project iframe {
-  border: none;
-}
-div.project img {
+div.project img, div.project canvas, div.project div.asciinema-player {
   display: block;
-  width: 800px;
-}
-div.project div.asciinema-player {
-  width: 800px;
+  width: 100%;
 }
