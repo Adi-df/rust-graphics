@@ -1,4 +1,22 @@
-h1 {
-  text-align: center;
+body {
   font-family: sans-serif;
+}
+
+h1.title {
+  text-align: center;
+}
+
+div.projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+div.project iframe {
+  border: none;
+}
+div.project img {
+  display: block;
+  width: 800px;
 }
