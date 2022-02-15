@@ -63,7 +63,7 @@ fn main() {
         .with_size(WIDTH, HEIGHT)
         .with_align(Align::Center);
 
-    let mut frame = Frame::new(0, 0, WIDTH, HEIGHT, "Triangles");
+    let mut frame = Frame::new(0, 0, WIDTH, HEIGHT, "Shapes");
     frame.set_frame(FrameType::DownBox);
     frame.set_color(Color::Black);
 

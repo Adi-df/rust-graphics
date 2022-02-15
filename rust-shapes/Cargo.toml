@@ -1,5 +1,5 @@
 [package]
-name = "rust-triangles4"
+name = "rust-shapes"
 version = "0.1.0"
 edition = "2021"
 
