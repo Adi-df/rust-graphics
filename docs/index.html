@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="css/style.css" rel="stylesheet">
   <link href="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.css" rel="stylesheet">
-  <script src="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.min.js" defer></script>
+  <script src="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.min.js" async></script>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
     <div class="project">
       <h2>Bezier Curves (interactive)</h2>
       <canvas id="glcanvas" width="800" height="600"></canvas>
-      <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js" defer></script>
+      <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js" async></script>
       <script>
         window.addEventListener("load", () => {
           load("wasm/rust-bezier.wasm");
