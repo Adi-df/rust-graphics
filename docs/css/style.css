@@ -17,7 +17,9 @@ div.project {
   max-width: 800px;
 }
 
-div.project img, div.project canvas, div.project div.asciinema-player {
+div.project img,
+div.project canvas,
+div.project div.asciinema-player {
   display: block;
   width: 100%;
 }

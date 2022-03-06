@@ -3,11 +3,46 @@
 
 <head>
   <title>Rust ART</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="css/style.css" rel="stylesheet">
-  <link href="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.css" rel="stylesheet">
-  <script src="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.min.js" async></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.css" rel="stylesheet" />
+
+  <script type="module" defer>
+    const loadBezier = async () => {
+      const {default: load} = await import(
+        "./js/mq_js_bundle_bezier.min.js"
+      );
+      load("wasm/rust-bezier.wasm");
+
+      document
+        .querySelector("#glcanvas-bezier")
+        .addEventListener("contextmenu", (e) => e.preventDefault());
+    };
+    const loadFourier = async () => {
+      const {default: load} = await import(
+        "./js/mq_js_bundle_fourier.min.js"
+      );
+      load("wasm/rust-fourier.wasm");
+    };
+    const loadRain = async () => {
+      const {default: AsciinemaPlayer} = await import(
+        "./js/asciinema-player.min.js"
+      );
+      AsciinemaPlayer.create(
+        "casts/rust-rain.cast",
+        document.querySelector("div#rust-rain-player"),
+        {
+          loop: true,
+          preload: true,
+          autoPlay: true,
+        }
+      );
+    };
+    loadBezier();
+    loadFourier();
+    loadRain();
+  </script>
 </head>
 
 <body>
@@ -15,57 +50,43 @@
   <div class="projects">
     <div class="project">
       <h2>Bezier Curves (interactive)</h2>
-      <canvas id="glcanvas" width="800" height="600"></canvas>
-      <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js" async></script>
-      <script>
-        window.addEventListener("load", () => {
-          load("wasm/rust-bezier.wasm");
-          document
-            .querySelector("#glcanvas")
-            .addEventListener("contextmenu", (e) => e.preventDefault());
-        });
-      </script>
+      <canvas id="glcanvas-bezier" width="800" height="600"></canvas>
+    </div>
+    <div class="project">
+      <h2>Fourier series</h2>
+      <canvas id="glcanvas-fourier" width="800" height="600"></canvas>
     </div>
     <div class="project">
       <h2>Rain</h2>
       <div class="asciinema-player" id="rust-rain-player"></div>
-      <script>
-        window.addEventListener("load", () => {
-          AsciinemaPlayer.create('casts/rust-rain.cast', document.querySelector("div#rust-rain-player"), {
-            loop: true,
-            preload: true,
-            autoPlay: true
-          });
-        });
-      </script>
     </div>
     <div class="project">
       <h2>Triangles 1</h2>
-      <img src="images/triangles1.png">
+      <img src="images/triangles1.png" />
     </div>
     <div class="project">
       <h2>Triangles 2</h2>
-      <img src="images/triangles2.png">
+      <img src="images/triangles2.png" />
     </div>
     <div class="project">
       <h2>Triangles 3</h2>
-      <img src="images/triangles3.png">
+      <img src="images/triangles3.png" />
     </div>
     <div class="project">
       <h2>Shapes</h2>
-      <img src="images/shapes.png">
+      <img src="images/shapes.png" />
     </div>
     <div class="project">
       <h2>Clocks</h2>
-      <img src="images/clocks.png">
+      <img src="images/clocks.png" />
     </div>
     <div class="project">
       <h2>City</h2>
-      <img src="images/city.png">
+      <img src="images/city.png" />
     </div>
     <div class="project">
       <h2>Circles</h2>
-      <img src="images/circles.png">
+      <img src="images/circles.png" />
     </div>
   </div>
 </body>
