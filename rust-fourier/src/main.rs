@@ -40,7 +40,7 @@ async fn main() {
         clear_background(BLACK);
 
         {
-            let mut pos = (500., 500.);
+            let mut pos = (400., 300.);
 
             trigos.iter().for_each(|(m, tm)| {
                 let next_pos = (
