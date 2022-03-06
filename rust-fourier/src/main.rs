@@ -10,27 +10,25 @@ static WHITE: Color = color_u8!(255, 255, 255, 255);
 async fn main() {
     let step: f32 = TAU / STEPS as f32;
 
-    let trigos: Vec<(f32, f32)> = vec![(100., 1.), (50., 2.), (25., 3.)];
+    let mut trigos_fns = vec![
+        vec![(100., 1.), (50., 2.), (25., 3.)],
+        (0..10)
+            .map(|i| (150. / 2u32.pow(i) as f32, i as f32 + 1.))
+            .collect(),
+        vec![(50., 1.), (50., 2.), (50., 3.), (50., 4.)],
+        vec![(150., 1.), (75., 5.), (37.5, -1.)],
+        vec![(100., 1.), (100., -1.)],
+        vec![(150., 1.), (150., -2.)],
+        vec![(100., 1.), (100., -3.), (50., 5.)],
+        (0..20).map(|i| (10., -1. * i as f32)).collect(),
+        (0..20)
+            .map(|i| (i as f32 * 1.7, i as f32 / 10. * 2.))
+            .collect(),
+    ]
+    .into_iter()
+    .cycle();
 
-    // let trigos: Vec<(f32, f32)> = (0..10)
-    //     .map(|i| (200. / 2u32.pow(i) as f32, i as f32 + 1.))
-    //     .collect();
-
-    // let trigos: Vec<(f32, f32)> = vec![(100., 1.), (100., 2.), (100., 3.), (100., 4.)];
-
-    // let trigos: Vec<(f32, f32)> = vec![(200., 1.), (100., 5.), (50., -1.)];
-
-    // let trigos: Vec<(f32, f32)> = vec![(200., 1.), (200., -1.)];
-
-    // let trigos: Vec<(f32, f32)> = vec![(200., 1.), (200., -2.)];
-
-    // let trigos: Vec<(f32, f32)> = vec![(150., 1.), (150., -3.), (75., 5.)];
-
-    // let trigos: Vec<(f32, f32)> = (0..20).map(|i| (10., -1. * i as f32)).collect();
-
-    // let trigos: Vec<(f32, f32)> = (0..20)
-    //     .map(|i| (i as f32 * 2., i as f32 / 10. * 2.))
-    //     .collect();
+    let mut trigos: Vec<(f32, f32)> = trigos_fns.next().unwrap();
 
     let mut points: Vec<(f32, f32)> = Vec::new();
 
@@ -68,6 +66,7 @@ async fn main() {
         if t == STEPS {
             t = 0;
             points = Vec::new();
+            trigos = trigos_fns.next().unwrap();
         }
 
         next_frame().await;
