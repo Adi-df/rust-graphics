@@ -11,10 +11,8 @@
     />
 
     <script type="module" defer>
-      import { create } from "./js/gl.min.mjs";
-      import AsciinemaPlayer from "./js/asciinema-player.min.js";
-
-      const loadBezier = () => {
+      const loadBezier = async () => {
+        const { create } = await import("./js/gl.min.mjs");
         const { load } = create(document.querySelector("#glcanvas-bezier"));
         load("wasm/rust-bezier.wasm");
 
@@ -22,11 +20,15 @@
           .querySelector("#glcanvas-bezier")
           .addEventListener("contextmenu", (e) => e.preventDefault());
       };
-      const loadFourier = () => {
+      const loadFourier = async () => {
+        const { create } = await import("./js/gl.min.mjs");
         const { load } = create(document.querySelector("#glcanvas-fourier"));
         load("wasm/rust-fourier.wasm");
       };
-      const loadRain = () => {
+      const loadRain = async () => {
+        const { default: AsciinemaPlayer } = await import(
+          "./js/asciinema-player.min.js"
+        );
         AsciinemaPlayer.create(
           "casts/rust-rain.cast",
           document.querySelector("div#rust-rain-player"),
