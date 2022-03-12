@@ -25,6 +25,11 @@
         const { load } = create(document.querySelector("#glcanvas-fourier"));
         load("wasm/rust-fourier.wasm");
       };
+      const loadMandelbrot = async () => {
+        const { create } = await import("./js/gl.min.mjs");
+        const { load } = create(document.querySelector("#glcanvas-mandelbrot"));
+        load("wasm/rust-mandelbrot.wasm");
+      };
       const loadRain = async () => {
         const { default: AsciinemaPlayer } = await import(
           "./js/asciinema-player.min.js"
@@ -40,6 +45,7 @@
         );
       };
 
+      loadMandelbrot();
       loadBezier();
       loadFourier();
       loadRain();
@@ -50,7 +56,11 @@
     <h1 class="title">Rust ART</h1>
     <div class="projects">
       <div class="project">
-        <h2>Bezier Curves (interactive)</h2>
+        <h2>Mandelbrot</h2>
+        <canvas id="glcanvas-mandelbrot" width="800" height="400"></canvas>
+      </div>
+      <div class="project">
+        <h2>Bezier Curves</h2>
         <canvas id="glcanvas-bezier" width="800" height="600"></canvas>
       </div>
       <div class="project">
