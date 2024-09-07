@@ -1,3 +1,3 @@
-# [rust-art](https://adi-df.github.io/rust-art/)
+# [rust-graphics](https://adi-df.github.io/rust-graphics/)
 Random try on graphics with rust.
-See screenshots [here](https://adi-df.github.io/rust-art/).
+See screenshots [here](https://adi-df.github.io/rust-graphics/).
